@@ -2,17 +2,19 @@ import React from 'react';
 import {
   View,
   SectionList,
-  RefreshControl
+  RefreshControl,
+  StyleSheet,
+  Text
 } from 'react-native';
 
-import Color from '../components/Color'
+import Colors from '../constants/Colors'
 
 class ContactsList extends React.Component {
   _keyExtractor = (item, index) => item.id;
 
 
   _renderSectionHeader = ({section}) => {
-    return <LabelText style={styles.label}>{section.title}</LabelText>
+    return <Text style={styles.label}>{section.title}</Text>
   }
 
   _onRefresh = () => {
@@ -20,12 +22,14 @@ class ContactsList extends React.Component {
   }
 
   _renderItem = ({item}) => (
-    <TickerCard ticker={item} onPressItem={this.onPressItem}/>
+    <View >
+      <Text>This is an item</Text>
+    </View>
   );
 
   render() {
     const { contacts, isLoading } = this.props
-
+    console.log("Contacts are: ", contacts)
     const sections = [
       {
         title: `A`,
@@ -55,8 +59,8 @@ class ContactsList extends React.Component {
                 onRefresh={this._onRefresh}
                 refreshing={false}
                 title="Refresh Contacts"
-                tintColor={Color.tintColor}
-                titleColor={Color.tintColor}
+                tintColor={Colors.tintColor}
+                titleColor={Colors.tintColor}
               />
             }
           /> : <Loader/>
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "center",
     alignItems: "stretch",
-    backgroundColor: Color.backgroundColor,
+    backgroundColor: Colors.backgroundColor,
   },
   label: {
     paddingVertical: 10,

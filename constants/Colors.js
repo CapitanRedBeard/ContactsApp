@@ -1,5 +1,5 @@
-export default {
-  tintColor: '#FF0083'
+const Colors = {
+  tintColor: '#FF0083',
 
   textValue: '#333',
   textValueSecondary: '#999',
@@ -7,3 +7,5 @@ export default {
   backgroundColor: '#FFF',
   backgroundColorSecondary: '#EEE',
 }
+
+export default Colors

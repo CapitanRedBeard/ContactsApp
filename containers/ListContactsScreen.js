@@ -5,6 +5,7 @@ import {
   Text
 } from 'react-native';
 import { connect } from "react-redux"
+import { Ionicons } from '@expo/vector-icons';
 
 import { fetchContacts } from '../actions/contacts';
 import ContactsList from '../components/ContactsList';
@@ -13,7 +14,14 @@ import Colors from '../constants/Colors'
 
 class ContactsScreen extends React.Component {
   static navigationOptions = {
-    headerTitle: "Contacts"
+    tabBarLabel: 'Home',
+    tabBarIcon: ({ tintColor }) => (
+      <Ionicons
+        name="ios-contact"
+        size={28}
+        style={styles.icon}
+      />
+    ),
   };
 
   componentWillMount() {
@@ -38,7 +46,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "center",
     alignItems: "stretch",
-    backgroundColor: DarkTheme.canvas,
+    backgroundColor: Colors.backgroundColor,
   },
   label: {
     paddingVertical: 10,

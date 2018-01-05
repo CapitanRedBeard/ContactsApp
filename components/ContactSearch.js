@@ -1,23 +1,25 @@
 import React from 'react';
-import { View, TextInput, Platform } from 'react-native';
+import { View, TextInput, Platform, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Loader(props) {
+import Colors from '../constants/Colors'
+
+export default function ContactSearch(props) {
   return (
     <View style={styles.searchContainer}>
       <Ionicons
         name="ios-search"
         size={12}
         style={styles.searchIcon}
-        color={DarkTheme.tintColor}
+        color={Colors.tintColor}
       />
       <TextInput
-        value={this.state.inputValue}
-        onChangeText={this._handleTextChange}
+        value={props.value}
+        onChangeText={props.handleTextChange}
         style={styles.searchBar}
         placeholder="Enter Ticker..."
-        selectionColor={DarkTheme.textValue}
-        placeholderTextColor={DarkTheme.textValueSecondary}
+        selectionColor={Colors.textValue}
+        placeholderTextColor={Colors.textValueSecondary}
         underlineColorAndroid='transparent'/>
     </View>
   );
@@ -26,7 +28,7 @@ export default function Loader(props) {
 const styles = StyleSheet.create({
 
   searchContainer: {
-    backgroundColor: DarkTheme.backgroundColor,
+    backgroundColor: Colors.backgroundColor,
   },
   searchIcon: {
     position: "absolute",
@@ -41,9 +43,9 @@ const styles = StyleSheet.create({
     margin: 8,
     borderRadius: 3,
     overflow: 'hidden',
-    backgroundColor: DarkTheme.backgroundColorSecondary,
+    backgroundColor: Colors.backgroundColorSecondary,
     fontSize: 14,
-    color: DarkTheme.textValue,
+    color: Colors.textValue,
     height: 40,
     borderRadius: Platform.OS === 'ios' ? 15 : 20,
     ...Platform.select({

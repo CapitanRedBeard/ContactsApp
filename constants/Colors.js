@@ -1,5 +1,5 @@
 const Colors = {
-  tintColor: '#FF0083',
+  tintColor: '#37A0FB',
 
   textValue: '#333',
   textValueSecondary: '#999',

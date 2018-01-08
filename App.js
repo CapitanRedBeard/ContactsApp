@@ -18,6 +18,7 @@ const RootNavigation = TabNavigator(
   },
   {
     animationEnabled: true,
+    swipeEnabled: true,
     tabBarOptions: {
       activeTintColor: Colors.tintColor,
     },

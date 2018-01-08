@@ -22,22 +22,39 @@ class ContactsList extends React.Component {
     this.props.fetchTickers()
   }
 
-  render() {
-    const { contacts, isLoading } = this.props
-
-    const sections = [
-      {
-        title: `A`,
-        data: contacts
+  _sortContactsIntoSections = contacts => {
+    const sections = []
+    contacts.forEach(contact => {
+      const firstLetter = contact.name && contact.name.charAt(0).toUpperCase()
+      const sectionIndex = sections.findIndex(section => section.title === firstLetter)
+      if(sectionIndex !== -1) {
+        sections[sectionIndex].data.push(contact)
+      }else{
+        sections.push({
+          title: firstLetter,
+          data: [contact]
+        })
       }
-    ]
-    // const favoriteTickers = tickers.filter(ticker => Boolean(favorites[ticker.symbol]))
-    // const otherTickers = tickers.filter(ticker => !Boolean(favorites[ticker.symbol]))
-    // const sections = []
-    // if(favoriteTickers.length) {
-    //   sections.push({title: `Favorite Currencies`,  data: favoriteTickers})
-    // }
-    // sections.push({title: `Other Currencies`,  data: otherTickers})
+    })
+
+    sections.sort((a, b) => {
+      var sectionTitleA = a.title
+      var sectionTitleB = b.title
+      if (sectionTitleA <= sectionTitleB) {
+        return -1
+      }
+      if (sectionTitleA > sectionTitleB) {
+        return 1
+      }
+    })
+
+
+    return sections
+  }
+
+  render() {
+    const { contacts, onRefresh } = this.props
+    const sections = this._sortContactsIntoSections(contacts)
 
     return (
       <View style={styles.container}>
@@ -51,7 +68,7 @@ class ContactsList extends React.Component {
             initialNumToRender={20}
             refreshControl={
               <RefreshControl
-                onRefresh={this._onRefresh}
+                onRefresh={onRefresh}
                 refreshing={false}
                 title="Refresh Contacts"
                 tintColor={Colors.tintColor}

@@ -29,12 +29,13 @@ class ContactsScreen extends React.Component {
   }
 
   render() {
-    const { contacts } = this.props
+    const { contacts, fetchContacts } = this.props
 
     return (
       <View style={styles.container}>
+        <Text style={styles.header} key="header" >Contacts</Text>
         <ContactSearch />
-        <ContactsList contacts={contacts} />
+        <ContactsList contacts={contacts} onRefresh={fetchContacts}/>
       </View>
     );
   }
@@ -48,10 +49,12 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     backgroundColor: Colors.backgroundColor,
   },
-  label: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
+  header: {
+    padding: 10,
+    marginTop: 20,
+    fontSize: 24,
+    fontWeight: "600",
+  }
 });
 
 export default connect(

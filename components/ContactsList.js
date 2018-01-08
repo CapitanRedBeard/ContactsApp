@@ -10,7 +10,7 @@ import {
 import Colors from '../constants/Colors'
 
 class ContactsList extends React.Component {
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item.number;
 
 
   _renderSectionHeader = ({section}) => {
@@ -47,7 +47,7 @@ class ContactsList extends React.Component {
     return (
       <View style={styles.container}>
         {
-          isLoading ?
+          contacts ?
           <SectionList
             sections={sections}
             keyExtractor={this._keyExtractor}

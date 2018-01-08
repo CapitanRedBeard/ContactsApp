@@ -7,8 +7,6 @@ import ListContactsScreen from './containers/ListContactsScreen'
 import configureStore from './configureStore'
 import Colors from './constants/Colors'
 
-const store = configureStore()
-
 const RootNavigation = TabNavigator(
   {
     ListContacts: {
@@ -30,7 +28,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Provider store={store}>
+        <Provider store={configureStore()}>
           <RootNavigation />
         </Provider>
       </View>
@@ -41,10 +39,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: "red",
+    backgroundColor: Colors.backgroundColor,
   },
 });

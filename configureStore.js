@@ -9,7 +9,5 @@ const middlewares = [thunk]
 middlewares.push(logger)
 
 export default function configureStore() {
-  let store = createStore(reducers, {}, applyMiddleware(...middlewares))
-
-  return store
+  return createStore(reducers, {}, applyMiddleware(...middlewares))
 }

@@ -14,12 +14,12 @@ import Colors from '../constants/Colors'
 
 class ContactsScreen extends React.Component {
   static navigationOptions = {
-    tabBarLabel: 'Home',
+    tabBarLabel: 'Contacts',
     tabBarIcon: ({ tintColor }) => (
       <Ionicons
         name="ios-contact"
         size={28}
-        style={styles.icon}
+        style={{color: tintColor}}
       />
     ),
   };
@@ -34,7 +34,7 @@ class ContactsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ContactSearch />
-        <ContactsList contacts={contacts} isLoading={true}/>
+        <ContactsList contacts={contacts} />
       </View>
     );
   }

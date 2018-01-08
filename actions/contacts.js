@@ -1,8 +1,13 @@
 import { ActionTypes } from "../constants/Types"
+import { fetchContactsAPI } from '../api/contactsAPI'
 
-export function fetchContacts() {
+function updateContacts(contacts) {
   return {
     type: ActionTypes.FETCH_CONTACTS,
-    contacts: []
+    contacts
   }
+}
+
+export function fetchContacts() {
+  return async dispatch =>  dispatch(updateContacts(await fetchContactsAPI()))
 }

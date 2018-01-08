@@ -4,6 +4,7 @@ import { TabNavigator } from 'react-navigation';
 import { Provider } from 'react-redux'
 
 import ListContactsScreen from './containers/ListContactsScreen'
+import AddContactScreen from './containers/AddContactScreen'
 import configureStore from './configureStore'
 import Colors from './constants/Colors'
 
@@ -12,8 +13,8 @@ const RootNavigation = TabNavigator(
     ListContacts: {
       screen: ListContactsScreen,
     },
-    AddContacts: {
-      screen: ListContactsScreen,
+    AddContact: {
+      screen: AddContactScreen,
     }
   },
   {

@@ -6,3 +6,13 @@ export async function fetchContactsAPI() {
     return response.json()
   }
 }
+
+export async function postContactAPI(name, number, context) {
+  return fetch(
+    `${domain}/contacts`,
+    {
+      method: "POST",
+      body: JSON.stringify({name, number, context})
+    }
+  )
+}

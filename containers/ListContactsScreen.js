@@ -10,7 +10,7 @@ import Fuse from 'fuse.js'
 
 import { fetchContacts } from '../actions/contacts';
 import ContactsList from '../components/ContactsList';
-import ContactSearch from '../components/ContactSearch';
+import Input from '../components/Input';
 import Colors from '../constants/Colors'
 
 class ContactsScreen extends React.Component {
@@ -67,7 +67,12 @@ class ContactsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header} key="header" >Contacts</Text>
-        <ContactSearch handleTextChange={this.handleTextChange}/>
+        <Input
+          handleTextChange={this.handleTextChange}
+          placeholder="Enter Name or Number..."
+          value={searchValue}
+          iconName="ios-search"
+        />
         <ContactsList contacts={this._filterContacts(contacts, searchValue)} onRefresh={fetchContacts}/>
       </View>
     );
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 10,
-    marginTop: 20,
+    marginTop: 30,
     fontSize: 24,
     fontWeight: "600",
   }

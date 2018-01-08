@@ -9,7 +9,7 @@ export default function ContactSearch(props) {
     <View style={styles.searchContainer}>
       <Ionicons
         name="ios-search"
-        size={12}
+        size={18}
         style={styles.searchIcon}
         color={Colors.tintColor}
       />
@@ -32,29 +32,21 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     position: "absolute",
-    top: 16,
-    left: 17,
+    top: 18,
+    left: 20,
     zIndex: 5,
     backgroundColor: "transparent",
   },
   searchBar: {
-    paddingLeft: 26,
+    paddingLeft: 34,
     paddingRight: 19,
     margin: 8,
-    borderRadius: 3,
+    borderRadius: 5,
     overflow: 'hidden',
     backgroundColor: Colors.backgroundColorSecondary,
     fontSize: 14,
     color: Colors.textValue,
     height: 40,
-    borderRadius: Platform.OS === 'ios' ? 15 : 20,
-    ...Platform.select({
-      ios: {
-        height: 30,
-      },
-      android: {
-        borderWidth: 0,
-      },
-    }),
+    borderWidth: 0,
   }
 })

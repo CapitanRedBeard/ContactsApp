@@ -17,7 +17,7 @@ export default function ContactSearch(props) {
         value={props.value}
         onChangeText={props.handleTextChange}
         style={styles.searchBar}
-        placeholder="Enter Ticker..."
+        placeholder="Enter Name or Number..."
         selectionColor={Colors.textValue}
         placeholderTextColor={Colors.textValueSecondary}
         underlineColorAndroid='transparent'/>

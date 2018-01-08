@@ -8,28 +8,23 @@ import {
 } from 'react-native';
 
 import Colors from '../constants/Colors'
+import ContactsListItem from './ContactsListItem'
 
 class ContactsList extends React.Component {
   _keyExtractor = (item, index) => item.number;
 
 
   _renderSectionHeader = ({section}) => {
-    return <Text style={styles.label}>{section.title}</Text>
+    return <Text style={styles.sectionLabel}>{section.title}</Text>
   }
 
   _onRefresh = () => {
     this.props.fetchTickers()
   }
 
-  _renderItem = ({item}) => (
-    <View >
-      <Text>This is an item</Text>
-    </View>
-  );
-
   render() {
     const { contacts, isLoading } = this.props
-    console.log("Contacts are: ", contacts)
+
     const sections = [
       {
         title: `A`,
@@ -52,7 +47,7 @@ class ContactsList extends React.Component {
             sections={sections}
             keyExtractor={this._keyExtractor}
             renderSectionHeader={this._renderSectionHeader}
-            renderItem={this._renderItem}
+            renderItem={({item}) => ContactsListItem(item)}
             initialNumToRender={20}
             refreshControl={
               <RefreshControl
@@ -78,8 +73,11 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     backgroundColor: Colors.backgroundColor,
   },
-  label: {
-    paddingVertical: 10,
+  sectionLabel: {
+    backgroundColor: Colors.backgroundColorSecondary,
+    color: Colors.textValueSecondary,
+    fontWeight: "600",
+    paddingVertical: 5,
     paddingHorizontal: 20,
   },
 });
